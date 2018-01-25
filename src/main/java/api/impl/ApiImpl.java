@@ -11,7 +11,7 @@ public class ApiImpl implements Api {
     @Override
     public void queryCats(String query, CatsQueryCallback catsQueryCallback) {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -28,7 +28,7 @@ public class ApiImpl implements Api {
     public void store(Cat cat) {
         try {
             System.out.println("Enregistrement en cours...");
-            Thread.sleep(1000);
+            Thread.sleep(5000);
             System.out.println("Enregistrement en bdd du chat: " + cat + " effectué");
         } catch (InterruptedException e) {
             e.printStackTrace();
