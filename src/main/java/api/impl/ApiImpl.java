@@ -11,7 +11,9 @@ public class ApiImpl implements Api {
     @Override
     public void queryCats(String query, CatsQueryCallback catsQueryCallback) {
         try {
+            System.out.println("Chargement de l'ensemble des chats...");
             Thread.sleep(5000);
+            System.out.println("Chargement terminé!");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
