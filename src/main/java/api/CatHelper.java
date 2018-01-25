@@ -18,7 +18,15 @@ public class CatHelper {
     }
 
     private Cat findCutest(List<Cat> cats) {
-        return Collections.max(cats);
+        try {
+            System.out.println("Recherche en cours du chat le plus mignon...");
+            Thread.sleep(5000);
+            Cat cat = Collections.max(cats);
+            System.out.println("Trouvé! "+ cat + " est le chat le plus mignon!");
+            return cat;
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
