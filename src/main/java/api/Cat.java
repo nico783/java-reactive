@@ -1,3 +1,5 @@
+package api;
+
 public class Cat implements Comparable<Cat> {
 
     private int cuteness;
