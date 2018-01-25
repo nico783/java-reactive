@@ -10,19 +10,9 @@ public class CatHelper {
     }
 
     public void saveTheCutestCat(String query) {
-        api.queryCats(query, new CatsQueryCallback() {
-            @Override
-            public void onCatListReceived(List<Cat> cats) {
-                Cat cutest = findCutest(cats);
-                api.store(cutest);
-            }
-
-            @Override
-            public void onError(Exception e) {
-
-            }
-        });
-
+        List<Cat> cats = api.queryCats(query);
+        Cat cutest = findCutest(cats);
+        api.store(cutest);
     }
 
     private Cat findCutest(List<Cat> cats) {

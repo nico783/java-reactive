@@ -2,7 +2,7 @@ import java.util.List;
 
 public interface Api {
 
-    void queryCats(String query, CatsQueryCallback catsQueryCallback);
+    List<Cat> queryCats(String query);
 
     void store(Cat cat);
 

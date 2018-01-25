@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class CatHelperTest {
 
@@ -22,7 +23,7 @@ public class CatHelperTest {
     private class ApiMock implements Api {
 
         @Override
-        public void queryCats(String query, CatsQueryCallback catsQueryCallback) {
+        public List<Cat> queryCats(String query) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -34,7 +35,7 @@ public class CatHelperTest {
             Cat cat4 = new Cat(5);
             Cat cat5 = new Cat(1);
 
-            catsQueryCallback.onCatListReceived(Arrays.asList(cat1, cat2, cat3, cat4, cat5));
+            return Arrays.asList(cat1, cat2, cat3, cat4, cat5);
         }
 
         @Override
