@@ -1,8 +1,6 @@
 package api.impl;
 
-import api.Api;
-import api.Cat;
-import api.CatsQueryCallback;
+import api.*;
 
 import java.util.Arrays;
 
@@ -27,14 +25,16 @@ public class ApiImpl implements Api {
     }
 
     @Override
-    public void store(Cat cat) {
+    public void store(Cat cat, StoreCallback storeCallback) {
         try {
             System.out.println("Enregistrement en cours...");
             Thread.sleep(5000);
-            System.out.println("Enregistrement en bdd du chat: " + cat + " effectué");
+            System.out.println("Traitement OK");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        storeCallback.onCatStored(new Uri(cat.toString()));
     }
 
 }

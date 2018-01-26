@@ -1,12 +1,9 @@
-import api.Api;
-import api.Cat;
 import api.CatHelper;
-import api.CatsQueryCallback;
+import api.CutestCatCallback;
+import api.Uri;
 import api.impl.ApiImpl;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Arrays;
 
 public class CatHelperTest {
 
@@ -20,7 +17,19 @@ public class CatHelperTest {
     @Test
     public void saveTheCutestCat() {
         long debut = System.currentTimeMillis();
-        catHelper.saveTheCutestCat("");
+        catHelper.saveTheCutestCat("", new CutestCatCallback() {
+
+            @Override
+            public void onCutestCatSaved(Uri uri) {
+                System.out.println("Enregistrement en bdd du chat: " + uri + " effectué");
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+
+        });
         System.out.println(System.currentTimeMillis() - debut);
     }
 

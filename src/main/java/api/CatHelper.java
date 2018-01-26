@@ -11,12 +11,22 @@ public class CatHelper {
         this.api = api;
     }
 
-    public void saveTheCutestCat(String query) {
+    public void saveTheCutestCat(String query, final CutestCatCallback cutestCatCallback) {
         api.queryCats(query, new CatsQueryCallback() {
             @Override
             public void onCatListReceived(List<Cat> cats) {
                 Cat cutest = findCutest(cats);
-                api.store(cutest);
+                api.store(cutest, new StoreCallback() {
+                    @Override
+                    public void onCatStored(Uri cat) {
+                        cutestCatCallback.onCutestCatSaved(cat);
+                    }
+
+                    @Override
+                    public void onStoreFailed(Exception e) {
+
+                    }
+                });
             }
 
             @Override
